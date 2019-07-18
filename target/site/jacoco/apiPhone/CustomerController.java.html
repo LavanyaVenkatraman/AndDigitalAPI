@@ -4,92 +4,94 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import javax.inject.Inject;
 import org.json.JSONException;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @RestController
-<span class="fc" id="L16">public class CustomerController {</span>
+<span class="fc" id="L14">public class CustomerController {</span>
 
     @Inject
     ErrorHandling errorHandling;
 
-<span class="fc" id="L21">    private Customer[] customerList=new Customer[2];</span>
-<span class="fc" id="L22">    String[] customer1Phone = new String[]{&quot;123&quot;,&quot;456&quot;,&quot;789&quot;};</span>
-<span class="fc" id="L23">    String[] customer2Phone = new String[]{&quot;111&quot;,&quot;222&quot;,&quot;333&quot;};</span>
+    @Inject
+    ObjectMapper mapper;
+
+<span class="fc" id="L22">    private Customer[] customerList=new Customer[3];</span>
+
+<span class="fc" id="L24">    String[] customer1Phone = new String[]{&quot;123&quot;,&quot;456&quot;,&quot;789&quot;};</span>
+<span class="fc" id="L25">    String[] customer2Phone = new String[]{&quot;111&quot;,&quot;222&quot;,&quot;333&quot;};</span>
+<span class="fc" id="L26">    String[] customer3Phone = new String[]{&quot;666&quot;,&quot;777&quot;};</span>
     String jsonStr;
 
+
+//retrieve details of all customers along with their phone numbers
+
     @RequestMapping(&quot;/allCustomerDetails&quot;)
-    public String getCustomerDetails() throws IOException, JSONException {
-<span class="fc" id="L28">        return createCustomerList();</span>
+    public String getCustomerDetails() {
+<span class="fc" id="L34">        return createCustomerList();</span>
     }
+//retrieve details of a customer based on their customer id along with their phone numbers
 
     @RequestMapping(&quot;/customer&quot;)
         public String getCustomerDetails(@RequestParam(value = &quot;customerID&quot;) String id) throws IOException, JSONException {
         int i;
-<span class="fc" id="L34">        createCustomerList();</span>
-<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        for(i = 0 ; i&lt;customerList.length;i++)</span>
+<span class="fc" id="L41">        createCustomerList();</span>
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        for(i = 0 ; i&lt;customerList.length;i++)</span>
         {
-<span class="pc bpc" id="L37" title="1 of 2 branches missed.">            if(id.equals(customerList[i].getCustomerId())){</span>
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">            if(id.equals(customerList[i].getCustomerId())){</span>
                 try {
-<span class="fc" id="L39">                    ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);</span>
-<span class="fc" id="L40">                    jsonStr = mapper.writeValueAsString(customerList[i]);</span>
+<span class="fc" id="L46">                    mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);</span>
+<span class="fc" id="L47">                    jsonStr = mapper.writeValueAsString(customerList[i]);</span>
                 }
-<span class="nc" id="L42">                catch (IOException e){</span>
-<span class="nc" id="L43">                    e.printStackTrace();</span>
-<span class="fc" id="L44">                }</span>
-<span class="fc" id="L45">                return jsonStr;</span>
+<span class="nc" id="L49">                catch (IOException e){</span>
+<span class="nc" id="L50">                    e.printStackTrace();</span>
+<span class="fc" id="L51">                }</span>
+<span class="fc" id="L52">                return jsonStr;</span>
             }
         }
-<span class="nc" id="L48">        return errorHandling.customError(LocalDateTime.now(),&quot;CustomerID not found&quot;);</span>
+
+<span class="nc" id="L56">        return errorHandling.customError(LocalDateTime.now(),&quot;CustomerID not found&quot;);</span>
     }
+//modifies phone number of a customer based on their customer Id, Old phone number.
 
     @RequestMapping(&quot;/activatePhone&quot;)
-    public String activatePhone(@RequestParam(value = &quot;customerID&quot;) String customerId, @RequestParam(value = &quot;oldPhone&quot;) String oldPhone,@RequestParam(value = &quot;newPhone&quot;) String newPhone) throws IOException, JSONException {
-<span class="fc" id="L53">        createCustomerList();</span>
-<span class="fc" id="L54">        int i = 0;</span>
-<span class="pc bpc" id="L55" title="1 of 2 branches missed.">        for (i = 0; i &lt; customerList.length; i++) {</span>
-<span class="pc bpc" id="L56" title="1 of 2 branches missed.">            if (customerId.equals(customerList[i].getCustomerId())) {</span>
-<span class="pc bpc" id="L57" title="1 of 2 branches missed.">                if (Arrays.asList(customerList[i].getPhoneNumber()).contains(oldPhone)) {</span>
-<span class="fc" id="L58">                    customerList[i].getPhoneNumber()[Arrays.asList(customerList[i].getPhoneNumber()).indexOf(oldPhone)] = newPhone;</span>
+    public String activatePhone(@RequestParam(value = &quot;customerID&quot;) String customerId, @RequestParam(value = &quot;oldPhone&quot;) String oldPhone,@RequestParam(value = &quot;newPhone&quot;) String newPhone)  {
+<span class="fc" id="L62">        createCustomerList();</span>
+<span class="fc" id="L63">        int i = 0;</span>
+<span class="pc bpc" id="L64" title="1 of 2 branches missed.">        for (i = 0; i &lt; customerList.length; i++) {</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">            if (customerId.equals(customerList[i].getCustomerId())) {</span>
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">                if (Arrays.asList(customerList[i].getPhoneNumber()).contains(oldPhone)) {</span>
+<span class="fc" id="L67">                    customerList[i].getPhoneNumber()[Arrays.asList(customerList[i].getPhoneNumber()).indexOf(oldPhone)] = newPhone;</span>
+
                     try {
-<span class="fc" id="L60">                        ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);</span>
-<span class="fc" id="L61">                        jsonStr = mapper.writeValueAsString(customerList[i]);</span>
+<span class="fc" id="L70">                         mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);</span>
+<span class="fc" id="L71">                        jsonStr = mapper.writeValueAsString(customerList[i]);</span>
                     }
-<span class="nc" id="L63">                    catch (IOException e){</span>
-<span class="nc" id="L64">                        e.printStackTrace();</span>
-<span class="fc" id="L65">                    }</span>
-<span class="fc" id="L66">                    return jsonStr;</span>
+<span class="nc" id="L73">                    catch (IOException e){</span>
+<span class="nc" id="L74">                        e.printStackTrace();</span>
+<span class="fc" id="L75">                    }</span>
+<span class="fc" id="L76">                    return jsonStr;</span>
                 }
                 }
             }
-<span class="nc" id="L70">        return errorHandling.customError(LocalDateTime.now(),&quot;Record not found. Please try with different values&quot;);</span>
+<span class="nc" id="L80">        return errorHandling.customError(LocalDateTime.now(),&quot;Record not found. Please try with different values&quot;);</span>
     }
 
-    private String createCustomerList() throws IOException, JSONException {
-<span class="fc" id="L74">        customerList[0] = new Customer(&quot;100&quot;, &quot;Lavanya&quot;,customer1Phone);</span>
-<span class="fc" id="L75">        customerList[1] = new Customer(&quot;200&quot;, &quot;Ramesh&quot;,customer2Phone);</span>
+    private String createCustomerList() {
+<span class="fc" id="L84">        customerList[0] = new Customer(&quot;100&quot;, &quot;Lavanya&quot;,customer1Phone);</span>
+<span class="fc" id="L85">        customerList[1] = new Customer(&quot;200&quot;, &quot;Ramesh&quot;,customer2Phone);</span>
+<span class="fc" id="L86">        customerList[2]= new Customer(&quot;300&quot;, &quot;Nithya&quot;,customer3Phone);</span>
         try {
-<span class="fc" id="L77">            ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);</span>
-<span class="fc" id="L78">            jsonStr = mapper.writeValueAsString(customerList);</span>
+<span class="fc" id="L88">            mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);</span>
+<span class="fc" id="L89">            jsonStr = mapper.writeValueAsString(customerList);</span>
         }
-<span class="nc" id="L80">        catch (IOException e){</span>
-<span class="nc" id="L81">            e.printStackTrace();</span>
-<span class="fc" id="L82">        }</span>
-<span class="fc" id="L83">        return jsonStr;</span>
+<span class="nc" id="L91">        catch (IOException e){</span>
+<span class="nc" id="L92">            e.printStackTrace();</span>
+<span class="fc" id="L93">        }</span>
+<span class="fc" id="L94">        return jsonStr;</span>
     }
 }
-
-//                String[] phoneList = new String[customerList[i].getPhoneNumber().length];
-//                for (j = 0; j &lt; customerList[i].getPhoneNumber().length; j++) {
-//                    phoneList[j] = customerList[i].getPhoneNumber()[j];
-//                }
-//                    if (oldPhone.equals(phoneList[j])) {
-//                        phoneList[j] = newPhone;
-//                        customerList[i].getPhoneNumber()[j] = phoneList[j];
-//                    }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

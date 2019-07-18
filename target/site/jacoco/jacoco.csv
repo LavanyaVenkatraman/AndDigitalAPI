@@ -1,5 +1,5 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 telecomapi,apiPhone,Application,8,0,0,0,3,0,2,0,2,0
-telecomapi,apiPhone,ErrorHandling,70,0,2,0,8,0,6,0,5,0
+telecomapi,apiPhone,ErrorHandling,22,48,1,1,2,6,3,3,2,3
 telecomapi,apiPhone,Customer,22,33,0,0,1,14,1,7,1,7
-telecomapi,apiPhone,CustomerController,25,178,5,5,8,28,5,5,0,5
+telecomapi,apiPhone,CustomerController,25,207,5,5,8,30,5,5,0,5

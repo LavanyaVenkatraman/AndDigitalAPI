@@ -1,6 +1,5 @@
 package apiPhone;
 
-
 public class Customer {
 
     private String customerId;

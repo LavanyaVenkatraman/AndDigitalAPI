@@ -8,22 +8,23 @@ import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 
 @Controller
-<span class="nc" id="L11">public class ErrorHandling implements ErrorController {</span>
-    Integer statusCode;
+<span class="fc" id="L11">public class ErrorHandling implements ErrorController {</span>
+    Integer status;
     Exception exception;
+
     @RequestMapping(&quot;/error&quot;)
     @ResponseBody
     public String handleError(HttpServletRequest request) {
-<span class="nc" id="L17">        statusCode = (Integer) request.getAttribute(&quot;javax.servlet.error.status_code&quot;);</span>
-<span class="nc" id="L18">        exception = (Exception) request.getAttribute(&quot;javax.servlet.error.exception&quot;);</span>
-<span class="nc bnc" id="L19" title="All 2 branches missed.">        return String.format(&quot;&lt;html&gt;&lt;body&gt;&lt;h2&gt;Error Page&lt;/h2&gt;&lt;div&gt;Status code: &lt;b&gt;%s&lt;/b&gt;&lt;/div&gt;&quot;</span>
+<span class="fc" id="L18">        status = (Integer) request.getAttribute(&quot;javax.servlet.error.status_code&quot;);</span>
+<span class="fc" id="L19">        exception = (Exception) request.getAttribute(&quot;javax.servlet.error.exception&quot;);</span>
+<span class="pc bpc" id="L20" title="1 of 2 branches missed.">        return String.format(&quot;&lt;html&gt;&lt;body&gt;&lt;h2&gt;Error Page&lt;/h2&gt;&lt;div&gt;Status code: &lt;b&gt;%s&lt;/b&gt;&lt;/div&gt;&quot;</span>
                         + &quot;&lt;div&gt;Exception Message: &lt;b&gt;%s&lt;/b&gt;&lt;/div&gt;&lt;body&gt;&lt;/html&gt;&quot;,
-<span class="nc" id="L21">                statusCode, exception==null? &quot;N/A&quot;: exception.getMessage());</span>
+<span class="pc" id="L22">                status, exception==null? &quot;N/A&quot;: exception.getMessage());</span>
     }
 
     public String customError(LocalDateTime dateTime,String message) {
 
-<span class="nc" id="L26">        return &quot;[Date/Time= &quot;</span>
+<span class="fc" id="L27">        return &quot;[Date/Time= &quot;</span>
                 + dateTime
                 + &quot;, Error Message= &quot;
                 + message + &quot;]&quot;;
@@ -31,14 +32,14 @@ import java.time.LocalDateTime;
 
     @Override
     public String getErrorPath() {
-<span class="nc" id="L34">        return &quot;/error&quot;;</span>
+<span class="nc" id="L35">        return &quot;/error&quot;;</span>
     }
 
     @Override
     public String toString()
     {
-<span class="nc" id="L40">        return &quot;[statusCode=&quot;</span>
-                + statusCode
+<span class="nc" id="L41">        return &quot;[statusCode=&quot;</span>
+                + status
                 + &quot;, Exception=&quot;
                 + exception + &quot;]&quot;;
     }

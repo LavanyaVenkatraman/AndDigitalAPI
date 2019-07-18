@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: apiPhone.CustomerControllerTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.603 s - in apiPhone.CustomerControllerTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.79 s - in apiPhone.CustomerControllerTest

@@ -9,18 +9,22 @@ import java.time.LocalDateTime;
 
 @Controller
 public class ErrorHandling implements ErrorController {
-    Integer statusCode;
+    Integer status;
     Exception exception;
+
+
+    //Error Page
     @RequestMapping("/error")
     @ResponseBody
     public String handleError(HttpServletRequest request) {
-        statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
+        status = (Integer) request.getAttribute("javax.servlet.error.status_code");
         exception = (Exception) request.getAttribute("javax.servlet.error.exception");
         return String.format("<html><body><h2>Error Page</h2><div>Status code: <b>%s</b></div>"
                         + "<div>Exception Message: <b>%s</b></div><body></html>",
-                statusCode, exception==null? "N/A": exception.getMessage());
+                status, exception==null? "N/A": exception.getMessage());
     }
 
+    //Custom error for data not found
     public String customError(LocalDateTime dateTime,String message) {
 
         return "[Date/Time= "
@@ -38,7 +42,7 @@ public class ErrorHandling implements ErrorController {
     public String toString()
     {
         return "[statusCode="
-                + statusCode
+                + status
                 + ", Exception="
                 + exception + "]";
     }
