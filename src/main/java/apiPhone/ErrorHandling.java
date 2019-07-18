@@ -3,7 +3,6 @@ import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 
@@ -13,7 +12,7 @@ public class ErrorHandling implements ErrorController {
     Exception exception;
 
 
-    //Error Page
+    //Error Page - Default
     @RequestMapping("/error")
     @ResponseBody
     public String handleError(HttpServletRequest request) {

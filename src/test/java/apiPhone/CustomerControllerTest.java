@@ -31,7 +31,7 @@ public class CustomerControllerTest {
 
     @Test
     public void getAllCustomerDetails_test() {
-        assertThat("No value returned",customerController.getCustomerDetails(),notNullValue());
+        assertThat("No value returned",customerController.getAllCustomerDetails(),notNullValue());
     }
 
     @Test

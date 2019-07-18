@@ -1,4 +1,5 @@
 apiPhone/CustomerController.class
-apiPhone/Application.class
 apiPhone/Customer.class
+apiPhone/Application.class
+apiPhone/Swagger2UiConfiguration.class
 apiPhone/ErrorHandling.class

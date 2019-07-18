@@ -3,14 +3,18 @@ package apiPhone;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import javax.inject.Inject;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.json.JSONException;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @RestController
+@RequestMapping(path="/api/customers/")
+@Api(value="TelecomAPI", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CustomerController {
 
     @Inject
@@ -29,14 +33,18 @@ public class CustomerController {
 
 
 //retrieve details of all customers along with their phone numbers
-    @RequestMapping("/allCustomers")
-    public String getCustomerDetails() {
+
+    @RequestMapping(path="/allCustomers",method = RequestMethod.GET)
+    @ApiOperation("Get details of all customers")
+    public String getAllCustomerDetails() {
         return createCustomerList();
     }
 
 //retrieve details of a customer based on their customer id along with their phone numbers
-    @RequestMapping("/customerDetail")
-        public String getCustomerDetails(@RequestParam(value = "customerID") String id) throws IOException, JSONException {
+
+        @RequestMapping(path = "/customerDetail", method = RequestMethod.GET)
+        @ApiOperation("Gets specific customer detail")
+        public String getCustomerDetails(@RequestParam(value = "customerId") String id) throws IOException, JSONException {
         int i;
         createCustomerList();
         for(i = 0 ; i<customerList.length;i++)
@@ -59,12 +67,13 @@ public class CustomerController {
     }
 
 
-/*modifies phone number of a customer based on their customer Id, Old phone number.
-When the phone number is modified, the changes remain until a session is active.
+/*modifies phone number of a customer based on their customer Id and Old phone number.
+When the phone number is modified, the changes remain until a run session is active.
 If the program is re-run the changes are lost. This will be avoided when we use a permanent storage
 such as database/file.
 */
-    @RequestMapping("/activatePhone")
+    @RequestMapping(path = "/activatePhone", method = RequestMethod.GET)
+    @ApiOperation("Modify a phone number of a customer")
     public String activatePhone(@RequestParam(value = "customerID") String customerId, @RequestParam(value = "oldPhone") String oldPhone,@RequestParam(value = "newPhone") String newPhone)  {
         createCustomerList();
         int i = 0;
