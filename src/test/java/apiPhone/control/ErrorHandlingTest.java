@@ -9,6 +9,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 import static org.hamcrest.Matchers.notNullValue;
@@ -33,6 +34,11 @@ public class ErrorHandlingTest {
     @Test
     public void customError_test(){
         assertThat("No value returned",errorHandling.customError(LocalDateTime.now(),"testMessage"),notNullValue());
+    }
+
+    @Test
+    public void getErrorPath_test(){
+        assertThat("No value returned",errorHandling.getErrorPath(),notNullValue());
     }
 
 }
