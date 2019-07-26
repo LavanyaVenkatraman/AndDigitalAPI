@@ -1,6 +1,5 @@
 package apiPhone.control;
 import org.springframework.boot.web.servlet.error.ErrorController;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,13 +7,21 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 
+/**
+ * Error handler
+ */
+
 @RestController
 public class ErrorHandling implements ErrorController {
     Integer status;
     Exception exception;
 
 
-    //Error Page - Default
+    /**
+     * Error Page - Default
+     * @param request - Servlet request
+     * @return - returns error
+     */
     @RequestMapping("/error")
     @ResponseBody
     public String handleError(HttpServletRequest request) {
@@ -25,7 +32,12 @@ public class ErrorHandling implements ErrorController {
                 status, exception==null? "N/A": exception.getMessage());
     }
 
-    //Custom error for data not found
+    /**Custom error for data not found
+     *
+     * @param dateTime - Current Date Time
+     * @param message - Error Message
+     * @return - returns error
+     */
     public String customError(LocalDateTime dateTime,String message) {
 
         return "[Date/Time= "

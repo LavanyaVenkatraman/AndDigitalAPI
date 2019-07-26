@@ -15,6 +15,10 @@ import java.time.LocalDateTime;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
+/**
+ * Error handling check
+ */
+
 @RunWith(MockitoJUnitRunner.class)
 public class ErrorHandlingTest {
 

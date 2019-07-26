@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Swagger2UiConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">telecomapi</a> &gt; <a href="index.source.html" class="el_package">apiPhone.boundary</a> &gt; <span class="el_source">Swagger2UiConfiguration.java</span></div><h1>Swagger2UiConfiguration.java</h1><pre class="source lang-java linenums">package apiPhone.boundary;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Swagger2UiConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">telecomapi</a> &gt; <a href="index.source.html" class="el_package">apiPhone.boundary</a> &gt; <span class="el_source">Swagger2UiConfiguration.java</span></div><h1>Swagger2UiConfiguration.java</h1><pre class="source lang-java linenums">/**
+ * Contains Swagger UI
+ */
+package apiPhone.boundary;
 
 import apiPhone.control.CustomerController;
 import org.springframework.context.annotation.Bean;
@@ -13,30 +16,37 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * Swagger UI setup
+ */
 @EnableSwagger2
 @PropertySource(&quot;classpath:swagger.properties&quot;)
 @ComponentScan(basePackageClasses = CustomerController.class)
 @Configuration
-<span class="fc" id="L20">public class Swagger2UiConfiguration extends WebMvcConfigurerAdapter {</span>
+<span class="fc" id="L26">public class Swagger2UiConfiguration extends WebMvcConfigurerAdapter {</span>
     private static final String SWAGGER_API_VERSION = &quot;1.1&quot;;
     private static final String title = &quot;Telecom API&quot;;
     private static final String description = &quot;AND Digital Coding Challenge&quot;;
 
     private ApiInfo apiInformation(){
-<span class="fc" id="L26">        return new ApiInfoBuilder()</span>
-<span class="fc" id="L27">                .title(title)</span>
-<span class="fc" id="L28">                .description(description)</span>
-<span class="fc" id="L29">                .version(SWAGGER_API_VERSION)</span>
-<span class="fc" id="L30">                .build();</span>
+<span class="fc" id="L32">        return new ApiInfoBuilder()</span>
+<span class="fc" id="L33">                .title(title)</span>
+<span class="fc" id="L34">                .description(description)</span>
+<span class="fc" id="L35">                .version(SWAGGER_API_VERSION)</span>
+<span class="fc" id="L36">                .build();</span>
     }
 
+    /**
+     * Building swagger documentation
+     * @return
+     */
     @Bean
     public Docket api() {
-<span class="fc" id="L35">        return new Docket(DocumentationType.SWAGGER_2)</span>
-<span class="fc" id="L36">                .apiInfo(apiInformation())</span>
-<span class="fc" id="L37">                .select()</span>
-<span class="fc" id="L38">                .paths(PathSelectors.regex(&quot;/api.*&quot;))</span>
-<span class="fc" id="L39">                .build();</span>
+<span class="fc" id="L45">        return new Docket(DocumentationType.SWAGGER_2)</span>
+<span class="fc" id="L46">                .apiInfo(apiInformation())</span>
+<span class="fc" id="L47">                .select()</span>
+<span class="fc" id="L48">                .paths(PathSelectors.regex(&quot;/api.*&quot;))</span>
+<span class="fc" id="L49">                .build();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

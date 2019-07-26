@@ -6,6 +6,10 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 @RunWith(MockitoJUnitRunner.class)
@@ -30,7 +34,9 @@ public class CustomerTest {
 
     @Test
     public void phoneNumber_test(){
-        String[] phoneNumber = new String[]{"123","456"};
+        List<String> phoneNumber = new ArrayList<>();
+        phoneNumber.add("123");
+        phoneNumber.add("456");
         customer.setPhoneNumber(phoneNumber);
         assertThat("Wrong Customer Name returned",customer.getPhoneNumber(),equalTo(phoneNumber));
     }

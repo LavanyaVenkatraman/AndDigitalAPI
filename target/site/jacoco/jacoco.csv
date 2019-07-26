@@ -1,6 +1,6 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-telecomapi,apiPhone.entity,Customer,0,33,0,0,0,14,0,7,0,7
+telecomapi,apiPhone.entity,Customer,4,39,0,0,2,16,1,8,1,8
 telecomapi,apiPhone.boundary,Swagger2UiConfiguration,0,27,0,0,0,11,0,3,0,3
 telecomapi,apiPhone,Application,8,0,0,0,3,0,2,0,2,0
 telecomapi,apiPhone.control,ErrorHandling,3,50,1,1,0,7,1,4,0,4
-telecomapi,apiPhone.control,CustomerController,9,223,1,9,6,32,1,9,0,5
+telecomapi,apiPhone.control,CustomerController,28,325,9,13,9,57,7,11,0,7

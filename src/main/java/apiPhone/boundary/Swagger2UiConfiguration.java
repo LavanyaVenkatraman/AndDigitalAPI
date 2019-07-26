@@ -1,3 +1,6 @@
+/**
+ * Contains Swagger UI
+ */
 package apiPhone.boundary;
 
 import apiPhone.control.CustomerController;
@@ -13,6 +16,9 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * Swagger UI setup
+ */
 @EnableSwagger2
 @PropertySource("classpath:swagger.properties")
 @ComponentScan(basePackageClasses = CustomerController.class)
@@ -30,6 +36,10 @@ public class Swagger2UiConfiguration extends WebMvcConfigurerAdapter {
                 .build();
     }
 
+    /**
+     * Building swagger documentation
+     * @return
+     */
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)

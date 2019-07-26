@@ -1,5 +1,5 @@
-apiPhone/control/CustomerController.class
-apiPhone/boundary/Swagger2UiConfiguration.class
-apiPhone/entity/Customer.class
-apiPhone/Application.class
-apiPhone/control/ErrorHandling.class
+apiPhone\control\CustomerController.class
+apiPhone\control\ErrorHandling.class
+apiPhone\Application.class
+apiPhone\boundary\Swagger2UiConfiguration.class
+apiPhone\entity\Customer.class

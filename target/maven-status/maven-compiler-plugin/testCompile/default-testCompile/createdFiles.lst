@@ -1,4 +1,4 @@
-apiPhone/boundary/Swagger2UiConfigTest.class
-apiPhone/control/CustomerControllerTest.class
-apiPhone/entity/CustomerTest.class
-apiPhone/control/ErrorHandlingTest.class
+apiPhone\control\CustomerControllerTest.class
+apiPhone\control\ErrorHandlingTest.class
+apiPhone\entity\CustomerTest.class
+apiPhone\boundary\Swagger2UiConfigTest.class

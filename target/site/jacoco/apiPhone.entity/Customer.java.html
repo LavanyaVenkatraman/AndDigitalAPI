@@ -1,40 +1,112 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Customer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">telecomapi</a> &gt; <a href="index.source.html" class="el_package">apiPhone.entity</a> &gt; <span class="el_source">Customer.java</span></div><h1>Customer.java</h1><pre class="source lang-java linenums">package apiPhone.entity;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Customer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">telecomapi</a> &gt; <a href="index.source.html" class="el_package">apiPhone.entity</a> &gt; <span class="el_source">Customer.java</span></div><h1>Customer.java</h1><pre class="source lang-java linenums">/**
+ * Contains customer object
+ */
+package apiPhone.entity;
 
+import java.util.List;
+
+/**
+ * Class represents Customer Details
+ */
 public class Customer {
 
     private String customerId;
     private String customerName;
-    private String[] phoneNumber;
-
-<span class="fc" id="L9">   public Customer(String customerId, String customerName,String[] phoneNumber){</span>
-<span class="fc" id="L10">        this.customerId = customerId;</span>
-<span class="fc" id="L11">        this.customerName = customerName;</span>
-<span class="fc" id="L12">        this.phoneNumber = phoneNumber;</span>
-<span class="fc" id="L13">    }</span>
-
-    public String[] getPhoneNumber() {
-<span class="fc" id="L16">        return phoneNumber;</span>
-    }
-
-    public void setPhoneNumber(String[] phoneNumber) {
-<span class="fc" id="L20">        this.phoneNumber = phoneNumber;</span>
-<span class="fc" id="L21">    }</span>
-
-    public String getCustomerId() {
-<span class="fc" id="L24">        return customerId;</span>
-    }
-
-    public void setCustomerId(String customerId) {
-<span class="fc" id="L28">        this.customerId = customerId;</span>
+    private String address;
+    private List&lt;String&gt; phoneNumber;
+//private List&lt;String&gt; phoneNumber;
+    /**
+     *
+     * @param customerId - Unique customer ID
+     * @param customerName - Customer Name
+     * @param phoneNumber - Phone numbers associated to a customer
+     */
+<span class="fc" id="L24">   public Customer(String customerId, String customerName,List&lt;String&gt; phoneNumber,String address){</span>
+<span class="fc" id="L25">        this.customerId = customerId;</span>
+<span class="fc" id="L26">        this.customerName = customerName;</span>
+<span class="fc" id="L27">        this.address = address;</span>
+<span class="fc" id="L28">        this.phoneNumber = phoneNumber;</span>
 <span class="fc" id="L29">    }</span>
 
-    public String getCustomerName() {
-<span class="fc" id="L32">        return customerName;</span>
+    /**
+     *  gets customer phone number
+     * @return
+     */
+//    public String[] getPhoneNumber() {
+//        return phoneNumber;
+//    }
+
+    /**
+     *  set customer phone number
+     * @return
+     */
+//    public void setPhoneNumber(String[] phoneNumber) {
+//        this.phoneNumber = phoneNumber;
+//    }
+
+    /**
+     *  get customer ID
+     * @return
+     */
+    public String getCustomerId() {
+<span class="fc" id="L52">        return customerId;</span>
     }
 
-    public void setCustomerName(String customerName) {
-<span class="fc" id="L36">        this.customerName = customerName;</span>
-<span class="fc" id="L37">    }</span>
+    /**
+     *  set customer ID
+     *
+     */
+    public void setCustomerId(String customerId) {
+<span class="fc" id="L60">        this.customerId = customerId;</span>
+<span class="fc" id="L61">    }</span>
 
+    /**
+     *  get customer Name
+     * @return - returns customerName
+     */
+    public String getCustomerName() {
+<span class="fc" id="L68">        return customerName;</span>
+    }
+
+    /**
+     *  set customer Name
+     *
+     */
+    public void setCustomerName(String customerName) {
+<span class="fc" id="L76">        this.customerName = customerName;</span>
+<span class="fc" id="L77">    }</span>
+
+    /**
+     * gets customer's Address
+     * @return - address
+     */
+    public String getAddress() {
+<span class="fc" id="L84">        return address;</span>
+    }
+
+    /**
+     * sets the customer's address
+     * @param address - customer's address
+     */
+    public void setAddress(String address) {
+<span class="nc" id="L92">        this.address = address;</span>
+<span class="nc" id="L93">    }</span>
+
+    /**
+     *
+     * @return - List of customer's phone number
+     *
+     */
+    public List&lt;String&gt; getPhoneNumber() {
+<span class="fc" id="L101">        return phoneNumber;</span>
+    }
+
+    /**
+     *
+     * @param phoneNumber - Customer's list of phoneNumber
+     */
+    public void setPhoneNumber(List&lt;String&gt; phoneNumber) {
+<span class="fc" id="L109">        this.phoneNumber = phoneNumber;</span>
+<span class="fc" id="L110">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
